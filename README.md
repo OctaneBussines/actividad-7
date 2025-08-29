@@ -1,5 +1,15 @@
 # actividad-7
 
+<img width="358" height="762" alt="image" src="https://github.com/user-attachments/assets/a7128b2a-52d9-4790-9f34-8fd122171775" />
+
+<img width="358" height="762" alt="image" src="https://github.com/user-attachments/assets/6691c6c4-52f7-499c-a785-4d3d96360796" />
+
+<img width="358" height="762" alt="image" src="https://github.com/user-attachments/assets/c0b8e4db-4f5c-468c-901e-f0de04bef017" />
+
+<img width="358" height="762" alt="image" src="https://github.com/user-attachments/assets/ba187f9c-d967-4ba7-b1c2-70a4343174c6" />
+
+<img width="358" height="762" alt="image" src="https://github.com/user-attachments/assets/f5ca57ae-59dd-4862-9d03-2c42b8573e63" />
+
 1️⃣ Estructura general del proyecto
 
 Tu proyecto tiene varias partes principales:
