@@ -1,0 +1,222 @@
+// Booking Header
+.booking-header {
+  position: relative;
+  margin: -16px -16px 20px -16px;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 0 0 20px 20px;
+}
+
+.booking-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(63, 81, 181, 0.8), rgba(103, 58, 183, 0.8));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+  }
+}
+
+// Form Card
+.booking-form-card {
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+ion-card-header {
+  background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-shade));
+  color: white;
+  text-align: center;
+  padding: 20px;
+
+  ion-card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+}
+
+// Form Sections
+.form-section {
+  margin: 20px 0;
+  padding: 0 16px;
+}
+
+.section-title {
+  color: var(--ion-color-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// Form Items
+.form-item {
+  margin: 16px 0;
+  border-radius: 12px;
+  --border-radius: 12px;
+  --inner-padding-end: 16px;
+  --inner-padding-start: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  background: white;
+  transition: all 0.3s ease;
+
+  &:focus-within {
+    box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.2);
+    transform: translateY(-2px);
+  }
+
+  ion-label {
+    font-weight: 500;
+    color: var(--ion-color-primary);
+  }
+
+  ion-input, ion-select, ion-textarea, ion-datetime {
+    --color: var(--ion-color-dark);
+    --placeholder-color: var(--ion-color-medium);
+  }
+}
+
+// Button Section
+.button-section {
+  padding: 20px 16px;
+  margin-top: 20px;
+}
+
+.booking-button {
+  height: 56px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  --border-radius: 28px;
+  box-shadow: 0 4px 16px rgba(var(--ion-color-secondary-rgb), 0.3);
+  transition: all 0.3s ease;
+
+  &:not([disabled]):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--ion-color-secondary-rgb), 0.4);
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+  }
+}
+
+// Info Card
+.info-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  margin: 20px 0;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+
+  ion-card-header {
+    background: transparent;
+    color: var(--ion-color-primary);
+    padding: 16px;
+
+    ion-card-title {
+      font-size: 1.1rem;
+    }
+  }
+
+  ion-card-content {
+    padding: 0 16px 16px 16px;
+  }
+}
+
+// Time Slots
+.time-slots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.time-slot {
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  
+  &.available {
+    background: rgba(var(--ion-color-success-rgb), 0.1);
+    color: var(--ion-color-success);
+    border: 1px solid rgba(var(--ion-color-success-rgb), 0.3);
+  }
+  
+  &.busy {
+    background: rgba(var(--ion-color-danger-rgb), 0.1);
+    color: var(--ion-color-danger);
+    border: 1px solid rgba(var(--ion-color-danger-rgb), 0.3);
+  }
+}
+
+.time-legend {
+  font-size: 0.8rem;
+  color: var(--ion-color-medium);
+  margin: 0;
+  text-align: center;
+}
+
+// Responsive Design
+@media (min-width: 768px) {
+  .booking-form-card {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+  }
+  
+  .info-card {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+}
+
+// Content Background
+ion-content {
+  --background: linear-gradient(135deg, #f1f3f4, #e8eaf6);
+}
+
+// Animations
+.booking-form-card, .info-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

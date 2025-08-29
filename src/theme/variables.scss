@@ -1,0 +1,34 @@
+:root {
+  /** Colores principales **/
+  --ion-color-primary: #6a0dad; /* morado oscuro */
+  --ion-color-primary-rgb: 106, 13, 173;
+
+  --ion-color-secondary: #9b4dff; /* morado brillante */
+  --ion-color-secondary-rgb: 155, 77, 255;
+
+  --ion-color-tertiary: #2a2a2a; /* gris oscuro */
+  --ion-color-tertiary-rgb: 42, 42, 42;
+
+  --ion-background-color: #121212; /* negro suave */
+  --ion-text-color: #ffffff;
+
+  --ion-color-success: #00b894;
+  --ion-color-danger: #d63031;
+}
+
+/* Tema oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #121212;
+    --ion-text-color: #ffffff;
+  }
+}
+ion-tab-bar {
+  --background: #1a1a1a;
+  --color: #aaaaaa;
+  --color-selected: var(--ion-color-secondary);
+}
+
+ion-tab-button {
+  font-size: 12px;
+}

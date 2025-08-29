@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Mis Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Header Section -->
+  <div class="appointments-header">
+    <ion-img 
+      src="https://images.unsplash.com/photo-1622286346003-c650fa82bcab?w=400&h=150&fit=crop&crop=center" 
+      class="appointments-image">
+    </ion-img>
+    <div class="appointments-overlay">
+      <h2>📋 Tus Reservas</h2>
+      <p>Gestiona tus citas programadas</p>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    <ion-card class="stat-card">
+      <div class="stat-icon">📅</div>
+      <div class="stat-number">{{todasLasCitas.length}}</div>
+      <div class="stat-label">Citas Totales</div>
+    </ion-card>
+
+    <ion-card class="stat-card">
+      <div class="stat-icon">⏰</div>
+      <div class="stat-number">{{citasProximas.length}}</div>
+      <div class="stat-label">Próximas</div>
+    </ion-card>
+
+    <ion-card class="stat-card">
+      <div class="stat-icon">✅</div>
+      <div class="stat-number">{{citasCompletadas.length}}</div>
+      <div class="stat-label">Completadas</div>
+    </ion-card>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+    <ion-button 
+      [class.active]="filtroActivo === 'todas'"
+      (click)="filtroActivo = 'todas'"
+      fill="clear" 
+      size="small">
+      Todas
+    </ion-button>
+    <ion-button 
+      [class.active]="filtroActivo === 'proximas'"
+      (click)="filtroActivo = 'proximas'"
+      fill="clear" 
+      size="small">
+      Próximas
+    </ion-button>
+    <ion-button 
+      [class.active]="filtroActivo === 'completadas'"
+      (click)="filtroActivo = 'completadas'"
+      fill="clear" 
+      size="small">
+      Completadas
+    </ion-button>
+  </div>
+
+  <!-- Appointments List -->
+  <div class="appointments-list" *ngIf="citasFiltradas.length > 0">
+    <ion-card 
+      *ngFor="let cita of citasFiltradas; let i = index" 
+      class="appointment-card"
+      [class.completed]="cita.estado === 'completada'"
+      [class.upcoming]="cita.estado === 'programada'">
+      
+      <div class="appointment-header">
+        <div class="appointment-date">
+          <div class="day">{{formatDay(cita.fecha)}}</div>
+          <div class="month">{{formatMonth(cita.fecha)}}</div>
+        </div>
+        <div class="appointment-status">
+          <span [class]="'status-badge ' + cita.estado">
+            {{getStatusLabel(cita.estado)}}
+          </span>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="appointment-details">
+          <h3 class="service-title">{{cita.servicio}}</h3>
+          <div class="appointment-info">
+            <div class="info-item">
+              <ion-icon name="time-outline"></ion-icon>
+              <span>{{cita.hora}}</span>
+            </div>
+            <div class="info-item">
+              <ion-icon name="person-outline"></ion-icon>
+              <span>{{cita.nombre}}</span>
+            </div>
+          </div>
+          
+          <div class="appointment-actions" *ngIf="cita.estado === 'programada'">
+            <ion-button fill="outline" size="small" color="medium">
+              <ion-icon name="create-outline" slot="start"></ion-icon>
+              Editar
+            </ion-button>
+            <ion-button fill="outline" size="small" color="danger">
+              <ion-icon name="close-outline" slot="start"></ion-icon>
+              Cancelar
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="citasFiltradas.length === 0">
+    <ion-img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=200&h=200&fit=crop&crop=center"></ion-img>
+    <h3>No hay citas</h3>
+    <p>No tienes citas {{filtroActivo === 'todas' ? '' : filtroActivo}} por el momento.</p>
+    <ion-button routerLink="/tabs/tab1" color="primary">
+      <ion-icon name="add-outline" slot="start"></ion-icon>
+      Agendar Cita
+    </ion-button>
+  </div>
+</ion-content>

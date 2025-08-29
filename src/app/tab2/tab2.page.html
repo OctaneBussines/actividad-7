@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Agendar Cita</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Header Section -->
+  <div class="booking-header">
+    <ion-img 
+      src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=200&fit=crop&crop=center" 
+      class="booking-image">
+    </ion-img>
+    <div class="booking-overlay">
+      <h2>📅 Reserva tu Cita</h2>
+      <p>Elige el momento perfecto</p>
+    </div>
+  </div>
+
+  <!-- Booking Form -->
+  <ion-card class="booking-form-card">
+    <ion-card-header>
+      <ion-card-title>Información Personal</ion-card-title>
+    </ion-card-header>
+    
+    <form (ngSubmit)="agendarCita()" #form="ngForm" class="booking-form">
+      <div class="form-section">
+        <ion-item class="form-item">
+          <ion-label position="floating">👤 Nombre Completo</ion-label>
+          <ion-input 
+            [(ngModel)]="cita.nombre" 
+            name="nombre" 
+            required
+            type="text"
+            placeholder="Ingresa tu nombre">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label position="floating">📧 Correo Electrónico</ion-label>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="cita.correo" 
+            name="correo" 
+            required
+            placeholder="tu@email.com">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label position="floating">📱 Teléfono</ion-label>
+          <ion-input 
+            type="tel" 
+            [(ngModel)]="cita.telefono" 
+            name="telefono" 
+            required
+            placeholder="+519 300 123 45">
+          </ion-input>
+        </ion-item>
+      </div>
+
+      <div class="form-section">
+        <h3 class="section-title">🗓️ Fecha y Hora</h3>
+        
+        <ion-item class="form-item">
+          <ion-label position="floating">Fecha Preferida</ion-label>
+          <ion-datetime 
+            display-format="DD/MM/YYYY" 
+            [(ngModel)]="cita.fecha" 
+            name="fecha" 
+            required
+            min="2025-01-01"
+            presentation="date">
+          </ion-datetime>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label position="floating">Hora Preferida</ion-label>
+          <ion-datetime 
+            display-format="HH:mm" 
+            picker-format="HH:mm" 
+            [(ngModel)]="cita.hora" 
+            name="hora" 
+            required
+            presentation="time">
+          </ion-datetime>
+        </ion-item>
+      </div>
+
+      <div class="form-section">
+        <h3 class="section-title">✂️ Servicios</h3>
+        
+        <ion-item class="form-item">
+          <ion-label position="floating">Tipo de Servicio</ion-label>
+          <ion-select 
+            [(ngModel)]="cita.servicio" 
+            name="servicio" 
+            required
+            placeholder="Selecciona un servicio">
+            <ion-select-option value="corte">Corte Clásico - $25.000</ion-select-option>
+            <ion-select-option value="barba">Arreglo de Barba - $20.000</ion-select-option>
+            <ion-select-option value="combo">Corte + Barba - $40.000</ion-select-option>
+            <ion-select-option value="tratamiento">Tratamiento Capilar - $35.000</ion-select-option>
+            <ion-select-option value="vip">Experiencia VIP - $60.000</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label position="floating">Comentarios Adicionales</ion-label>
+          <ion-textarea 
+            [(ngModel)]="cita.comentarios" 
+            name="comentarios"
+            placeholder="¿Algún detalle especial que debamos saber?">
+          </ion-textarea>
+        </ion-item>
+      </div>
+
+      <div class="button-section">
+        <ion-button 
+          expand="block" 
+          type="submit" 
+          color="secondary" 
+          [disabled]="!form.valid"
+          class="booking-button">
+          <ion-icon name="calendar" slot="start"></ion-icon>
+          Confirmar Cita
+        </ion-button>
+      </div>
+    </form>
+  </ion-card>
+
+  <!-- Popular Times -->
+  <ion-card class="info-card">
+    <ion-card-header>
+      <ion-card-title>⏰ Horarios Populares</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="time-slots">
+        <span class="time-slot busy">9:00 AM</span>
+        <span class="time-slot available">10:30 AM</span>
+        <span class="time-slot available">2:00 PM</span>
+        <span class="time-slot busy">4:00 PM</span>
+        <span class="time-slot available">6:30 PM</span>
+      </div>
+      <p class="time-legend">
+        🟢 Disponible | 🔴 Ocupado
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

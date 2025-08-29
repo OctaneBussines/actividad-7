@@ -1,0 +1,27 @@
+.custom-tab-bar {
+  --background: linear-gradient(135deg, #1a1a1a, #2a003f);
+  --color: #c2a5ff;
+  --color-selected: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  ion-tab-button {
+    --ripple-color: #bb86fc;
+    --color: #aaa;
+    --color-selected: #fff;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    &.tab-selected {
+      transform: scale(1.1);
+      color: #fff;
+    }
+  }
+
+  ion-icon {
+    font-size: 22px;
+  }
+
+  ion-label {
+    font-size: 12px;
+  }
+}
+
